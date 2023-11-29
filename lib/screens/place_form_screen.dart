@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:usando_recursos_nativos/providers/grate_places.dart';
+import 'package:usando_recursos_nativos/providers/great_places.dart';
 import 'package:usando_recursos_nativos/widgets/image_input.dart';
 
 class PlaceFormScreen extends StatefulWidget {
@@ -25,7 +25,7 @@ class _PlaceFormScreenState extends State<PlaceFormScreen> {
       return;
     }
 
-    Provider.of<GratePlaces>(context, listen: false).addPlace(
+    Provider.of<GreatPlaces>(context, listen: false).addPlace(
       title: _titleController.text,
       image: _pickedImage!,
     );

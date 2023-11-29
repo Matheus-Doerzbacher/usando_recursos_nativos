@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:usando_recursos_nativos/providers/grate_places.dart';
+import 'package:usando_recursos_nativos/providers/great_places.dart';
 import 'package:usando_recursos_nativos/screens/place_form_screen.dart';
 import 'package:usando_recursos_nativos/screens/places_list_screen.dart';
 import 'package:usando_recursos_nativos/utils/app_routes.dart';
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => GratePlaces(),
+      create: (context) => GreatPlaces(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Recursos Nativos',

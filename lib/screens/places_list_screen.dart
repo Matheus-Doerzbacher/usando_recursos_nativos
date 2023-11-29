@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:usando_recursos_nativos/providers/grate_places.dart';
+import 'package:usando_recursos_nativos/providers/great_places.dart';
 import 'package:usando_recursos_nativos/utils/app_routes.dart';
 
 class PlacesListScreen extends StatelessWidget {
@@ -20,22 +20,22 @@ class PlacesListScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: Consumer<GratePlaces>(
+      body: Consumer<GreatPlaces>(
         child: const Center(
           child: Text("Nenhuma localização cadastrada"),
         ),
-        builder: (ctx, gratePlace, child) => gratePlace.itemsCount == 0
+        builder: (ctx, greatPlaces, child) => greatPlaces.itemsCount == 0
             ? child!
             : ListView.builder(
-                itemCount: gratePlace.itemsCount,
+                itemCount: greatPlaces.itemsCount,
                 itemBuilder: (ctx, i) => ListTile(
                   leading: CircleAvatar(
                     backgroundImage: FileImage(
-                      gratePlace.itemByIndex(i).image,
+                      greatPlaces.itemByIndex(i).image,
                     ),
                   ),
                   title: Text(
-                    gratePlace.items[i].title,
+                    greatPlaces.items[i].title,
                     style: const TextStyle(fontSize: 18),
                   ),
                   onTap: () {},
