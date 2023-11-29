@@ -1,4 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:usando_recursos_nativos/providers/grate_places.dart';
 import 'package:usando_recursos_nativos/widgets/image_input.dart';
 
 class PlaceFormScreen extends StatefulWidget {
@@ -10,8 +14,24 @@ class PlaceFormScreen extends StatefulWidget {
 
 class _PlaceFormScreenState extends State<PlaceFormScreen> {
   final _titleController = TextEditingController();
+  File? _pickedImage;
 
-  void _submitForm() {}
+  void _selectImage(File pickedImage) {
+    _pickedImage = pickedImage;
+  }
+
+  void _submitForm() {
+    if (_titleController.text.isEmpty || _pickedImage == null) {
+      return;
+    }
+
+    Provider.of<GratePlaces>(context, listen: false).addPlace(
+      title: _titleController.text,
+      image: _pickedImage!,
+    );
+
+    Navigator.of(context).pop();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +57,7 @@ class _PlaceFormScreenState extends State<PlaceFormScreen> {
                         ),
                       ),
                       const SizedBox(height: 10),
-                      const ImageInput(),
+                      ImageInput(_selectImage),
                     ],
                   ),
                 ),

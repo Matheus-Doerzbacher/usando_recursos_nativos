@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:usando_recursos_nativos/providers/grate_places.dart';
 import 'package:usando_recursos_nativos/screens/place_form_screen.dart';
 import 'package:usando_recursos_nativos/screens/places_list_screen.dart';
 import 'package:usando_recursos_nativos/utils/app_routes.dart';
@@ -13,20 +15,23 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Recursos Nativos',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.indigo,
-          secondary: Colors.amber,
+    return ChangeNotifierProvider(
+      create: (context) => GratePlaces(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Recursos Nativos',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: Colors.indigo,
+            secondary: Colors.amber,
+          ),
+          useMaterial3: true,
         ),
-        useMaterial3: true,
+        home: const PlacesListScreen(),
+        routes: {
+          AppRoutes.PLACE_FORM: (_) => const PlaceFormScreen(),
+        },
       ),
-      home: const PlacesListScreen(),
-      routes: {
-        AppRoutes.PLACE_FORM: (_) => const PlaceFormScreen(),
-      },
     );
   }
 }
