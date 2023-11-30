@@ -3,7 +3,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:usando_recursos_nativos/models/place.dart';
 
 class MapScreen extends StatefulWidget {
-  final PlaceLocation initalLocation;
+  final PlaceLocation? initalLocation;
   final bool isReadOnly;
 
   const MapScreen({
@@ -48,18 +48,18 @@ class _MapScreenState extends State<MapScreen> {
       body: GoogleMap(
         initialCameraPosition: CameraPosition(
           target: LatLng(
-            widget.initalLocation.latitude,
-            widget.initalLocation.longitude,
+            widget.initalLocation!.latitude,
+            widget.initalLocation!.longitude,
           ),
           zoom: 15,
         ),
         onTap: widget.isReadOnly ? null : _selectPosition,
-        markers: _pickedPosition == null
+        markers: (_pickedPosition == null && !widget.isReadOnly)
             ? <Marker>{}
             : {
                 Marker(
                   markerId: const MarkerId('p1'),
-                  position: _pickedPosition!,
+                  position: _pickedPosition ?? widget.initalLocation!.toLangLng(),
                 ),
               },
       ),

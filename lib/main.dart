@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:usando_recursos_nativos/providers/great_places.dart';
+import 'package:usando_recursos_nativos/screens/place_detail_screen.dart';
 import 'package:usando_recursos_nativos/screens/place_form_screen.dart';
 import 'package:usando_recursos_nativos/screens/places_list_screen.dart';
 import 'package:usando_recursos_nativos/utils/app_routes.dart';
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
         home: const PlacesListScreen(),
         routes: {
           AppRoutes.PLACE_FORM: (_) => const PlaceFormScreen(),
+          AppRoutes.PLACE_DETAIL: (_) => const PlaceDetailScreen(),
         },
       ),
     );
