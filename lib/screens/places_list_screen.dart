@@ -42,6 +42,9 @@ class PlacesListScreen extends StatelessWidget {
                             greatPlaces.items[i].title,
                             style: const TextStyle(fontSize: 18),
                           ),
+                          subtitle: Text(
+                            greatPlaces.items[i].location?.adress ?? '',
+                          ),
                           onTap: () {},
                         ),
                       ),
