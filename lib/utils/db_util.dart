@@ -24,7 +24,8 @@ class DbUtil {
     );
   }
 
-  // static Future<List<Map<String, dynamic>>> getData(String table) async {
-  //
-  // }
+  static Future<List<Map<String, dynamic>>> getData(String table) async {
+    final db = await DbUtil.dataBase();
+    return db.query(table);
+  }
 }
